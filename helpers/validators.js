@@ -96,3 +96,21 @@ export const updatePasswordValidator = [
         .withMessage('The password must be strong'),
     validateErrors
 ]
+
+export const createCategoryValidator = [
+    body('title', 'Title cannot be empty')
+        .notEmpty(),
+    body('description', 'Description cannot be empty')
+        .notEmpty(),
+    validateErrors
+]
+
+export const updateCategoryValidator = [
+    body('title', 'Title cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('description', 'Description cannot be empty')
+        .optional()
+        .notEmpty(),
+    validateErrors
+]
