@@ -163,3 +163,45 @@ export const updatePublicationValidator = [
         .exists(),
     validateErrors
 ]
+
+export const createCommentValidator = [
+    body('title', 'Title cannot be empty')
+        .notEmpty(),
+    body('text', 'Text cannot be empty')
+        .notEmpty(),
+    body('status', 'Status cannot be added')
+        .not()
+        .exists(),
+    body('publication', 'Publication cannot be empty')
+        .notEmpty()
+        .custom(objectIdValid),
+    body('user', 'User cannot be added')
+        .not()
+        .exists(),
+    body('createAt', 'CreateAt cannot be added')
+        .not()
+        .exists(),
+    validateErrors
+]
+
+export const updateCommentValidator = [
+    body('title', 'Title cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('text', 'Text cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('status', 'Status cannot be changed')
+        .not()
+        .exists(),
+    body('publication', 'Publication cannot be changed')
+        .not()
+        .exists(),
+    body('user', 'User cannot be changed')
+        .not()
+        .exists(),
+    body('createAt', 'CreateAt cannot be changed')
+        .not()
+        .exists(),
+    validateErrors
+]

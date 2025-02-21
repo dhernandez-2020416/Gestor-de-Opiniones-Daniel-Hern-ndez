@@ -32,7 +32,7 @@
 							"urlencoded": [
 								{
 									"key": "identifier",
-									"value": "dhernandez",
+									"value": "rgalindiño",
 									"type": "text"
 								},
 								{
@@ -543,6 +543,156 @@
 								"publication",
 								"deletePublication",
 								"67b7cef3b874c930df4c9037"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get Comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3800/v1/comment/getComments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"comment",
+								"getComments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Opinion Importante",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Opinion considerablemente importante",
+									"type": "text"
+								},
+								{
+									"key": "publication",
+									"value": "67b7c29e2bc9f7cea0be5128",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3800/v1/comment/createComment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"comment",
+								"createComment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Opinion Importante Actualizada",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Opinion considerablemente importante actualizada",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3800/v1/comment/updateComment/67b7f71751c9612f289c6301",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"comment",
+								"updateComment",
+								"67b7f71751c9612f289c6301"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3800/v1/comment/deleteComment/67b7f71751c9612f289c6301",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"comment",
+								"deleteComment",
+								"67b7f71751c9612f289c6301"
 							]
 						}
 					},

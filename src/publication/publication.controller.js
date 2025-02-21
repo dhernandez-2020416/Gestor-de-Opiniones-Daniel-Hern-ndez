@@ -12,9 +12,18 @@ export const getPublications = async(req, res) => {
         ).populate(
             {
                 path: 'user',
-                select: 'username -_id'
+                select: 'username -_id',
+                match: { status: true }
             }
-        )
+        ).populate({
+            path: 'comments',
+            select: '-_id title text',
+            populate: {
+                path: 'user',
+                select: 'username -_id'
+            },
+            match: { status: true }
+        })
 
         return res.send(
             {

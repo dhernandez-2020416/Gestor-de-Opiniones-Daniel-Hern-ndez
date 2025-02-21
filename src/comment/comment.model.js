@@ -12,6 +12,10 @@ const CommentSchema = Schema(
             required: [true, 'Text is required'],
             maxLength: [200, 'Text cannot exceed 200 characters']
         },
+        status: {
+            type: Boolean,
+            default: true
+        },
         publication: {
             type: Schema.Types.ObjectId,
             ref: 'Publication',
