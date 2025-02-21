@@ -242,3 +242,65 @@ export const deletePublication = async (req, res) => {
         )
     }
 }
+
+export const getPublication = async(req, res) => {
+    try {
+        const { idPublication } = req.params
+
+        const publication = await Publication.findById(idPublication)
+            .populate(
+                {
+                    path: 'category',
+                    select: 'title description -_id'
+                }
+            ).populate(
+                {
+                    path: 'user',
+                    select: 'username -_id',
+                    match: { status: true }
+                }
+            ).populate({
+                path: 'comments',
+                select: '-_id title text',
+                populate: {
+                    path: 'user',
+                    select: 'username -_id'
+                },
+                match: { status: true }
+            })
+
+        if(!publication){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'Publication not found'
+                }
+            )
+        }
+
+        if(!publication.status){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'Publication is eleminated'
+                }
+            )
+        }
+
+        return res.send(
+            {
+                success: true,
+                message: 'Publication found',
+                publication
+            }
+        )
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'General error'
+            }
+        )
+    }
+}

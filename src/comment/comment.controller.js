@@ -33,6 +33,61 @@ export const getComments = async (req, res) => {
     }
 }
 
+export const getComment = async(req, res) =>{
+    try {
+        const { idComment } = req.params
+
+        const comment = await Comment.findById(idComment)
+            .populate({
+                path: 'publication',
+                select: '-_id title text',
+                match: { status: true },
+                populate: {
+                    path: 'user',
+                    select: 'username -_id'
+                }
+            })
+            .populate({
+                path: 'user',
+                select: 'username -_id'
+            })
+            
+        if(!comment){
+            return res.status(404).send(
+                {
+                    success: false, 
+                    message: 'Comment not found'
+                }
+            )
+        }
+
+        if(!comment.status){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'Comment eleminated'
+                }
+            )
+        }
+
+        return res.send(
+            {
+                success: true,
+                message: 'Comment found',
+                comment
+            }
+        )
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'General error'
+            }
+        )
+    }
+}
+
 export const createComment = async(req, res) =>{
     try {
         const user = req.user.id
