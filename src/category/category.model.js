@@ -20,6 +20,11 @@ const CategorySchema = Schema(
     }
 )
 
+CategorySchema.methods.toJSON = function(){
+    const {__v, ...category} = this.toObject()
+    return category
+}
+
 const Category = model('Category', CategorySchema)
 
 const createDefaultCategory = async () => {

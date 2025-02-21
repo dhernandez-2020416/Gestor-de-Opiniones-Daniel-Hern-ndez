@@ -22,6 +22,10 @@ const PublicationSchema = Schema(
             ref: 'User',
             required: [true, 'User ID is required']
         },
+        status: {
+            type: Boolean,
+            default: true
+        },
         comments: [{
             type: Schema.Types.ObjectId,
             ref: 'Comment'
@@ -32,5 +36,10 @@ const PublicationSchema = Schema(
         }
     }
 )
+
+PublicationSchema.methods.toJSON = function(){
+    const {__v, ...publication} = this.toObject()
+    return publication
+}
 
 export default model('Publication', PublicationSchema)

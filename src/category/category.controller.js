@@ -43,7 +43,8 @@ export const getCategories = async(req, res) => {
         .populate(
             {
                 path: 'publication',
-                select: '_id title text'
+                select: '_id title text',
+                match: { status: 'true' }
             }
         )
 

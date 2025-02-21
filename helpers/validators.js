@@ -1,5 +1,5 @@
 import { body } from 'express-validator'
-import { existUsername, existEmail } from './db.validators.js'
+import { existUsername, existEmail, objectIdValid } from './db.validators.js'
 import { validateErrors } from './validate.error.js'
 
 export const registerValidator = [
@@ -112,5 +112,54 @@ export const updateCategoryValidator = [
     body('description', 'Description cannot be empty')
         .optional()
         .notEmpty(),
+    validateErrors
+]
+
+export const createPublicationValidator = [
+    body('title', 'Title cannot be empty')
+        .notEmpty(),
+    body('category', 'Category cannot be empty')
+        .notEmpty()
+        .custom(objectIdValid),
+    body('text', 'Text cannot be empty')
+        .notEmpty(),
+    body('User', 'User cannot be added')
+        .not()
+        .exists(),
+    body('status', 'Status cannot be added')
+        .not()
+        .exists(),
+    body('comments', 'Comments cannot be added')
+        .not()
+        .exists(),
+    body('createdAt', 'CreatedAt cannot be added')
+        .not()
+        .exists(),
+    validateErrors
+]
+
+export const updatePublicationValidator = [
+    body('title', 'Title cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('category', 'Category cannot be empty')
+        .optional()
+        .notEmpty()
+        .custom(objectIdValid),
+    body('text', 'Text cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('User', 'User cannot be change')
+        .not()
+        .exists(),
+    body('status', 'Status cannot be change')
+        .not()
+        .exists(),
+    body('comments', 'Comments cannot be change')
+        .not()
+        .exists(),
+    body('createdAt', 'CreatedAt cannot be change')
+        .not()
+        .exists(),
     validateErrors
 ]

@@ -347,7 +347,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3800/v1/category/updateCategory/67b53e5404148e3f680503ab",
+							"raw": "http://localhost:3800/v1/category/updateCategory/67b7af9faa122db8236cbab9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -357,7 +357,7 @@
 								"v1",
 								"category",
 								"updateCategory",
-								"67b53e5404148e3f680503ab"
+								"67b7af9faa122db8236cbab9"
 							]
 						}
 					},
@@ -375,7 +375,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3800/v1/category/deleteCategory/67b53f73e091ed1659d61416",
+							"raw": "http://localhost:3800/v1/category/deleteCategory/67b7af9faa122db8236cbab9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -385,7 +385,164 @@
 								"v1",
 								"category",
 								"deleteCategory",
-								"67b53f73e091ed1659d61416"
+								"67b7af9faa122db8236cbab9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publication",
+			"item": [
+				{
+					"name": "Get Publications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3800/v1/publication/getPublications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"publication",
+								"getPublications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Publication",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Prueba",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67b7c2932bc9f7cea0be5123",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Prueba",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3800/v1/publication/createPublication",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"publication",
+								"createPublication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Publication",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Noticia Importante",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "67b53a6229d895df7d8334f6",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Noticia demasiado importante",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3800/v1/publication/updatePublication/67b7cef3b874c930df4c9037",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"publication",
+								"updatePublication",
+								"67b7cef3b874c930df4c9037"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Publication",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3800/v1/publication/deletePublication/67b7cef3b874c930df4c9037",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3800",
+							"path": [
+								"v1",
+								"publication",
+								"deletePublication",
+								"67b7cef3b874c930df4c9037"
 							]
 						}
 					},
